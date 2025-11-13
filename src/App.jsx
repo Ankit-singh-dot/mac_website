@@ -5,7 +5,10 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ProductReview from "./components/ProductReview";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(ScrollTrigger);
 function App() {
   return (
     <div>
