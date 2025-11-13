@@ -8,6 +8,7 @@ import ProductReview from "./components/ProductReview";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import ShowCase from "./components/ShowCase";
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Navbar />
         <Hero />
         <ProductReview />
+        <ShowCase />
       </main>
     </div>
   );
