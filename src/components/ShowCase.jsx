@@ -1,6 +1,27 @@
 import React from "react";
+import { useGSAP } from "@gsap/react";
+import { useMediaQuery } from "react-responsive";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const ShowCase = () => {
+  const isTablet = useMediaQuery({ query: "(max-width:1024px)" });
+  useGSAP(() => {
+    if (!isTablet) {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#showcase",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          pin: true,
+        },
+      });
+      timeline
+        .to(".mask img", { scale: 1.1 })
+        .to(".content", { opacity: 1, y: 0, ease: "power1.in" });
+    }
+  }, [isTablet]);
   return (
     <section id="showcase">
       <div className="media">
@@ -9,12 +30,10 @@ const ShowCase = () => {
           <img src="/mask-logo.svg" alt="" />
         </div>
       </div>
-      <div className="content">
-        <div className="wrapper">
+      <div className="content ">
+        <div className="wrapper flex">
           <div className="lg:max-w-md"></div>
           <h2>Rocket chip</h2>
-        </div>
-        <div className="space-y-5 mt-7 pe-10">
           <p>
             Introducing{" "}
             <span className="text-white">
@@ -33,9 +52,11 @@ const ShowCase = () => {
             hardware-accelerated ray tracing brings console-level graphics to
             your fingertips.
           </p>
+        </div>
+        <div className="space-y-5 mt-7 pe-10 ">
           <p className="text-primary">Learn more about Apple Intelligence</p>
           <p className="text-2xl">Up to</p>
-          <p className="text-white">4x faster</p>
+          <p className="text-white text-4xl">4x faster</p>
           <p className="text-white">pro rendering performance than m2</p>
         </div>
       </div>
